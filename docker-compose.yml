@@ -1,0 +1,18 @@
+# Servidor PHP con MYSQL independiente  
+services:
+  php:
+    build: .    
+    # Nombre del contenedor 
+    container_name: servidor_base_php_sql_externo
+    # Puero de la aplicacion 
+    ports:
+      - "8001:80"
+    volumes:
+      - ./app:/var/www/html/app
+      - ./public:/var/www/html/public
+    # Variables del .env 
+    environment:
+      DB_HOST: ${DB_HOST}
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
